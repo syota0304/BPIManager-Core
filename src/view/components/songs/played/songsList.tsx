@@ -242,6 +242,8 @@ class SongsList extends React.Component<
         case 1:
           return Number(a.difficultyLevel) - Number(b.difficultyLevel);
         case 2:
+          if (Number.isNaN(a.currentBPI)) return orderMode === 0 ? 1 : -1;
+          if (Number.isNaN(b.currentBPI)) return orderMode === 0 ? -1 : 1;
           return a.currentBPI - b.currentBPI;
         case 3:
           const isUndefinedPlayState = 7;
